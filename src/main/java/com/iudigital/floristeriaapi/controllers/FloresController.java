@@ -4,15 +4,53 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.iudigital.floristeriaapi.models.FloresModel;
 import com.iudigital.floristeriaapi.services.FloresService;
 
-@RestController
-@RequestMapping("/flores")
-public class FloresController {
 
+
+@Controller
+
+public class FloresController {
+  
+  @GetMapping({"/index","/"})
+  public String index() {
+      return "index";
+  }
+  @GetMapping("/inventario")
+  public String mostrarInventario() {
+      return "inventario";
+  }
+   @GetMapping("/pedidos")
+    public String mostrarPedidos() {
+        return "pedidos";  
+    }
+
+    @GetMapping("/arreglos")
+    public String mostrarArreglos() {
+        return "arreglos";  
+    }
+
+    @GetMapping("/entregas")
+    public String mostrarEntregas() {
+        return "entregas";  
+    }
+
+    @GetMapping("/finanzas")
+    public String mostrarFinanzas() {
+        return "finanzas";  
+    }
+
+    @GetMapping("/informes")
+    public String mostrarInformes() {
+        return "informes";  
+    }
+  
+
+  
   @Autowired
   private FloresService floresService;
 
