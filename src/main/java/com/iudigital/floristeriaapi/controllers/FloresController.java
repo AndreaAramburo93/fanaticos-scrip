@@ -16,9 +16,9 @@ import com.iudigital.floristeriaapi.services.FloresService;
 
 public class FloresController {
   
-  @GetMapping({"/index","/"})
-  public String index() {
-      return "index";
+  @GetMapping({"/flor","/"})
+  public String crearFlor() {
+      return "crear-flor";
   }
   @GetMapping("/inventario")
   public String mostrarInventario() {
