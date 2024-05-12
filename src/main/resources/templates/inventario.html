@@ -23,7 +23,7 @@
       <table class="w-full border-collapse border border-gray-300">
         <thead>
           <tr class="bg-purple-200">
-            <th class="border border-purple-300">Tipo</th>
+            <th class="border border-purple-300">Nombre</th>
             <th class="border border-purple-300">Color</th>
             <th class="border border-purple-300">Variedad</th>
             <th class="border border-purple-300">Cantidad Disponible</th>
@@ -34,15 +34,15 @@
         </thead>
         <tbody>
           <!-- Ejemplo de datos -->
-          <tr class="bg-white">
-            <td class="border border-gray-300 py-2 px-4">Rosa</td>
-            <td class="border border-gray-300 py-2 px-4">Rojas</td>
-            <td class="border border-gray-300 py-2 px-4">De jardin</td>
-            <td class="border border-gray-300 py-2 px-4">50</td>
-            <td class="border border-gray-300 py-2 px-4">$8000</td>
-            <td class="border border-gray-300 py-2 px-4">$1200</td>
-            <td class="border border-gray-300 py-2 px-4 flex justify-between">
-              <a class="text-red-600 cursor-pointer"
+          <tr th:each="flor:${floresParaInventario}" class="bg-white">
+            <td th:text="${flor.nombre}"  class="border border-gray-300 py-2 px-4">Rosa</td>
+            <td th:text="${flor.color}" class="border border-gray-300 py-2 px-4">Rojas</td>
+            <td th:text="${flor.variedad}" class="border border-gray-300 py-2 px-4">De jardin</td>
+            <td th:text="${flor.cantidad_disponible}" class="border border-gray-300 py-2 px-4">50</td>
+            <td th:text="${flor.precio_compra}" class="border border-gray-300 py-2 px-4">$8000</td>
+            <td th:text="${flor.precio_venta}" class="border border-gray-300 py-2 px-4">$1200</td>
+            <td  class="border border-gray-300 py-2 px-4 flex justify-between">
+              <a  class="text-red-600 cursor-pointer"
                 ><i class="fas fa-trash"></i
               ></a>
               <a class="text-purple-600 cursor-pointer gap-3">
@@ -50,14 +50,7 @@
               ></a>
             </td>
           </tr>
-          <tr class="bg-gray-50">
-            <td class="border border-gray-300 py-2 px-4">Margaritas</td>
-            <td class="border border-gray-300 py-2 px-4">Amaarillas</td>
-            <td class="border border-gray-300 py-2 px-4">Comun</td>
-            <td class="border border-gray-300 py-2 px-4">50</td>
-            <td class="border border-gray-300 py-2 px-4">$6000</td>
-            <td class="border border-gray-300 py-2 px-4">$10000</td>
-          </tr>
+         
         </tbody>
       </table>
     </div>
