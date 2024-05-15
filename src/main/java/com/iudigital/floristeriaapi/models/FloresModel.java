@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class FloresModel {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id_flor;
+  
+  private long id_flor;
   private String nombre;
   private String color;
   private String variedad;
@@ -15,10 +16,10 @@ public class FloresModel {
   private double precio_compra;
   private double precio_venta;
 
-  public int getId_flor() {
+  public long getId_flor() {
     return id_flor;
   }
-  public void setIdFlor(int id_flor) {
+  public void setIdFlor(long id_flor) {
     this.id_flor = id_flor;
   }
   public String getNombre() {
@@ -39,22 +40,22 @@ public class FloresModel {
   public void setVariedad(String variedad) {
     this.variedad = variedad;
   }
-  public int getCantidadDisponible() {
+  public int getCantidad_disponible() {
     return cantidad_disponible;
   }
-  public void setCantidadDisponible(int cantidad_disponible) {
+  public void setCantidad_disponible(int cantidad_disponible) {
     this.cantidad_disponible = cantidad_disponible;
   }
-  public double getPrecioCompra() {
+  public double getPrecio_compra() {
     return precio_compra;
   }
-  public void setPrecioCompra(double precio_compra) {
+  public void setPrecio_compra(double precio_compra) {
     this.precio_compra = precio_compra;
   }
-  public double getPrecioVenta() {
+  public double getPrecio_venta() {
     return precio_venta;
   }
-  public void setPrecioVenta(double precio_venta) {
+  public void setPrecio_venta(double precio_venta) {
     this.precio_venta = precio_venta;
   }
   
