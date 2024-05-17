@@ -35,22 +35,55 @@
         <tbody>
           <!-- Ejemplo de datos -->
           <tr th:each="flor:${floresParaInventario}" class="bg-white">
-            <td th:text="${flor.nombre}"  class="border border-gray-300 py-2 px-4">Rosa</td>
-            <td th:text="${flor.color}" class="border border-gray-300 py-2 px-4">Rojas</td>
-            <td th:text="${flor.variedad}" class="border border-gray-300 py-2 px-4">De jardin</td>
-            <td th:text="${flor.cantidad_disponible}" class="border border-gray-300 py-2 px-4">50</td>
-            <td th:text="${flor.precio_compra}" class="border border-gray-300 py-2 px-4">$8000</td>
-            <td th:text="${flor.precio_venta}" class="border border-gray-300 py-2 px-4">$1200</td>
-            <td  class="border border-gray-300 py-2 px-4 flex justify-between">
-              <a  class="text-red-600 cursor-pointer"
-                ><i class="fas fa-trash"></i
-              ></a>
+            <td
+              th:text="${flor.nombre}"
+              class="border border-gray-300 py-2 px-4"
+            >
+              Rosa
+            </td>
+            <td
+              th:text="${flor.color}"
+              class="border border-gray-300 py-2 px-4"
+            >
+              Rojas
+            </td>
+            <td
+              th:text="${flor.variedad}"
+              class="border border-gray-300 py-2 px-4"
+            >
+              De jardin
+            </td>
+            <td
+              th:text="${flor.cantidad_disponible}"
+              class="border border-gray-300 py-2 px-4"
+            >
+              50
+            </td>
+            <td
+              th:text="${flor.precio_compra}"
+              class="border border-gray-300 py-2 px-4"
+            >
+              $8000
+            </td>
+            <td
+              th:text="${flor.precio_venta}"
+              class="border border-gray-300 py-2 px-4"
+            >
+              $1200
+            </td>
+            <td class="border border-gray-300 py-2 px-4 flex justify-between">
+
+              <a th:href="@{/eliminarflor/{id_flor}(id_flor=${flor.id_flor})}" class="text-red-600 cursor-pointer">
+                <i class="fas fa-trash"></i>
+            </a>
+            
+
               <a class="text-purple-600 cursor-pointer gap-3">
                 <i class="fas fa-pencil-alt"></i
               ></a>
             </td>
+            
           </tr>
-         
         </tbody>
       </table>
     </div>

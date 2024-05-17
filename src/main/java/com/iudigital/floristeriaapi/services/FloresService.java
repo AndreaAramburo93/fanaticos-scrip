@@ -24,6 +24,12 @@ public class FloresService {
     return this.floresRepository.save(flor);
   }
 
+  public void deleteFlorById(long id_flor) {
+    this.floresRepository.deleteById(id_flor);
+}
+
+
+
   public Optional<FloresModel> getFlorById(Long id) {
     return this.floresRepository.findById(id);
   }
@@ -39,12 +45,12 @@ public class FloresService {
     return this.floresRepository.save(florToUpdate);
   }
 
-  public Boolean deleteFlor (long id) {
-    try {
-      this.floresRepository.deleteById(id);
-      return true;
-    } catch (Exception e) {
-      return false;
-    }
-  }
+  // public Boolean deleteFlor (long id) {
+  //   try {
+  //     this.floresRepository.deleteById(id);
+  //     return true;
+  //   } catch (Exception e) {
+  //     return false;
+  //   }
+  // }
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.iudigital.floristeriaapi.services.FloresService;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
@@ -32,12 +31,20 @@ public class FloresController {
     }
   }
 
-  
+  //Metodo para guardar flor en la base de datos
   @PostMapping("/guardarflor")
   public String saveFlor(@ModelAttribute FloresModel flor) {
     this.floresService.saveFlor(flor);
     return "redirect:/inventario";
   }
+
+  @GetMapping("/eliminarflor/{id_flor}")
+  public String deleteFlor(@PathVariable("id_flor") Long id_flor){
+      floresService.deleteFlorById(id_flor);
+      return "redirect:/inventario";
+  }
+  
+
   @GetMapping(path = "/{id}")
   public Optional<FloresModel> getFlorById(@PathVariable("id") long id) {
     return this.floresService.getFlorById(id);
@@ -48,12 +55,7 @@ public class FloresController {
     return this.floresService.updateById(flor, id);
   }
 
-  @DeleteMapping(path = "/eliminarflor/{id}")
-  public String deleteFlor(@PathVariable("id") Integer id) {
-    boolean ok = this.floresService.deleteFlor(id);
-    if (ok) return "redirect:/inventario";
-    else return "error";
-  }
+
 
   @GetMapping({"/flor","/"})
   public String crearFlor() {
