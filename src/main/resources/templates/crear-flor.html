@@ -9,41 +9,7 @@
     <body>
         <!-- Linea de codigo reutilizable menu de navegacion -->
         <div th:replace="navbar :: nav"></div>
-    <div class=" max-w-3xl mx-auto bg-white p-8 rounded-md shadow-md">
-        <h1 class="text-3xl text-center font-bold mb-4">Agregar Flores</h1>
-        <form action="/guardarflor" method="POST">
-            <div class="mb-4 grid grid-cols-2 gap-4">
-                <div>
-                    <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200" required>
-                </div>
-                <div>
-                    <label for="color" class="block text-gray-700 text-sm font-bold mb-2">Color:</label>
-                    <input type="text" id="color" name="color" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200" required>
-                </div>
-                <div>
-                    <label for="variedad" class="block text-gray-700 text-sm font-bold mb-2">Variedad:</label>
-                    <input type="text" id="variedad" name="variedad" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200" required>
-                </div>
-                <div>
-                    <label for="cantidad" class="block text-gray-700 text-sm font-bold mb-2">Cantidad:</label>
-                    <input type="number" id="cantidad_disponible" name="cantidad_disponible" min="1" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200" required>
-                </div>
-                <div>
-                    <label for="precio_compra" class="block text-gray-700 text-sm font-bold mb-2">Precio de Compra:</label>
-                    <input type="number"  id="precio_compra" name="precio_compra" min="1" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200" required>
-                </div>
-                <div>
-                    <label for="precio_venta" class="block text-gray-700 text-sm font-bold mb-2">Precio de Venta:</label>
-                    <input type="number" id="precio_venta" name="precio_venta" min="1" class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200" required>
 
-                </div>
-            </div>
-            <div class="mt-6 text-center">
-                <button type="submit" class=" bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">Agregar</button>
-            </div>
-        </form>
-    </div>
 
     </body>
     </html>

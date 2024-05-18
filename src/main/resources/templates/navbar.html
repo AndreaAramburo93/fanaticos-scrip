@@ -1,11 +1,9 @@
 <div th:fragment="nav">
-    <nav class="bg-purple-900">
-        <div class="flex gap-8 items-center mx-30 h-10 my-5">
+    <nav class=" block top-0 w-full bg-purple-900">
+        <div class="flex gap-8 items-center mx-30 h-10 ">
             <a th:href=@{/} class="text-white ml-4 font-bold">Logo</a>
             <ul class="text-center flex justify-evenly mr-8 w-full">
-                <li>
-                    <a th:href="@{/flor}" class="text-white hover:text-gray-200">Agregar</a>
-                </li>
+              
                 <li>
                     <a th:href="@{/inventario}" class="text-white hover:text-gray-200">Inventario</a>
                 </li>
