@@ -207,7 +207,7 @@
                 <i class="fas fa-trash"></i>
               </a>
 
-              <a  class="text-purple-600 cursor-pointer gap-3">
+              <a  th:href="@{/editarflor/{id_flor}(id_flor=${flor.id_flor})}"  class="text-purple-600 cursor-pointer gap-3">
                 <i class="fas fa-pencil-alt"></i
               ></a>
             </td>
@@ -227,7 +227,6 @@
       });
 
       ocultarFormularioBtn.addEventListener("click",()=>{
-      console.log("hoal");
       formularioCrearFlor.classList.add("hidden")
       })
 
