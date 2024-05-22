@@ -1,45 +1,49 @@
 package com.iudigital.floristeriaapi.controllers;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.iudigital.floristeriaapi.services.FloresService;
 
-
 @Controller
 
 public class FloresController {
-  
-  
-  
-    private  FloresService floresService;
- 
-  public FloresController (FloresService floresService){
-      this.floresService=floresService;
-  }
- 
-   @GetMapping("/pedidos")
+
+    private FloresService floresService;
+
+    public FloresController(FloresService floresService) {
+        this.floresService = floresService;
+    }
+
+    @GetMapping("/")
+    public String inicio() {
+        return "index";
+    }
+
+    @GetMapping("/pedidos")
     public String mostrarPedidos() {
-        return "pedidos";  
+        return "pedidos";
     }
 
     @GetMapping("/arreglos")
     public String mostrarArreglos() {
-        return "arreglos";  
+        return "arreglos";
     }
 
     @GetMapping("/entregas")
     public String mostrarEntregas() {
-        return "entregas";  
+        return "entregas";
     }
 
     @GetMapping("/finanzas")
     public String mostrarFinanzas() {
-        return "finanzas";  
+        return "finanzas";
     }
 
     @GetMapping("/informes")
     public String mostrarInformes() {
-        return "informes";  
+        return "informes";
     }
-  
+
+    
 
 }

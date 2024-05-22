@@ -22,6 +22,8 @@
                 this.floresService=floresService;
             }
 
+        
+
             @GetMapping("/inventario")
         public String showFlores(Model model){
         
