@@ -27,70 +27,67 @@ public class PedidoController {
     
     private PedidosService pedidosService;
 
-public PedidoController (PedidosService pedidosService){
-    this.pedidosService=pedidosService;
-}
-/**
- * @param model
- * @return
- */
-@GetMapping("/totalpedidos")
-
-public String showPedido (Model model){
-try {
-    List <PedidoModel> pedido= pedidosService.getAllPedidos();
-    model.addAttribute("pedidosParaInventario",pedido);
-    return "/totalpedidos";
-} catch (Exception e){
-        return "error";
+    public PedidoController (PedidosService pedidosService){
+        this.pedidosService=pedidosService;
     }
-}
-
-@PostMapping("/guardarpedido")
-public String savePedido (@ModelAttribute PedidoModel pedido){
-    this.pedidosService.savePedido(pedido);
-    return "redirect/totalpedido";
-}
-
-@GetMapping(path ="/{id}")
-public Optional <PedidoModel> getPedidoById (@PathVariable("id") long id){
-    return this.pedidosService.getPedidoById(id);
-}
-
-@PutMapping(path = "/{id}")
-public Optional <PedidoModel> updateById (@RequestBody PedidoModel pedido, @PathVariable("id") Integrer id){
-    return this.pedidosService.updateById(pedido, id);
-}
-
-@DeleteMapping (path ="/eliminarpedido/{id}")
-public String deletePedido (@PathVariable ("id")Integer id){
-    boolean ok = this.pedidosService.deletePedido(id);
-    if (ok) return "redirect/totalpedidos";
-    else return "error";
-}
-@GetMapping({"/pedido","/"})
-public String crearPedido() {
-    return "crear-pedido";
-}
-@GetMapping("/arreglos")
-    public String mostrarArreglos() {
-        return "arreglos";  
+    
+    @GetMapping("/totalpedidos")
+    public String showPedido (Model model){
+    try {
+        List <PedidoModel> pedido= pedidosService.getAllPedidos();
+        model.addAttribute("pedidosParaInventario",pedido);
+        return "/totalpedidos";
+    } catch (Exception e){
+            return "error";
+        }
     }
 
-    @GetMapping("/entregas")
-    public String mostrarEntregas() {
-        return "entregas";  
+    @PostMapping("/guardarpedido")
+    public String savePedido (@ModelAttribute PedidoModel pedido){
+        this.pedidosService.savePedido(pedido);
+        return "redirect/totalpedido";
     }
 
-    @GetMapping("/finanzas")
-    public String mostrarFinanzas() {
-        return "finanzas";  
+    @GetMapping(path ="/{id}")
+    public Optional <PedidoModel> getPedidoById (@PathVariable("id") long id){
+        return this.pedidosService.getPedidoById(id);
     }
 
-    @GetMapping("/informes")
-    public String mostrarInformes() {
-        return "informes";  
+    @PutMapping(path = "/{id}")
+    public PedidoModel updateById (@RequestBody PedidoModel pedido, @PathVariable("id") Long id){
+        return this.pedidosService.updateById(pedido, id);
     }
+
+    @DeleteMapping (path ="/eliminarpedido/{id}")
+    public String deletePedido (@PathVariable ("id")Long id){
+        boolean ok = this.pedidosService.deletePedido(id);
+        if (ok) return "redirect/totalpedidos";
+        else return "error";
+    }
+
+    // @GetMapping({"/pedido","/"})
+    // public String crearPedido() {
+    //     return "crear-pedido";
+    // }
+    // @GetMapping("/arreglos")
+    // public String mostrarArreglos() {
+    //     return "arreglos";  
+    // }
+
+    // @GetMapping("/entregas")
+    // public String mostrarEntregas() {
+    //     return "entregas";  
+    // }
+
+    // @GetMapping("/finanzas")
+    // public String mostrarFinanzas() {
+    //     return "finanzas";  
+    // }
+
+    // @GetMapping("/informes")
+    // public String mostrarInformes() {
+    //     return "informes";  
+    // }
   
 
 }
