@@ -34,23 +34,9 @@ public class FloresService {
     return this.floresRepository.findById(id);
   }
 
-  public FloresModel updateById(FloresModel flor, long id) {
-    FloresModel florToUpdate = this.floresRepository.findById(id).get();
-    florToUpdate.setNombre(flor.getNombre());
-    florToUpdate.setColor(flor.getColor());
-    florToUpdate.setVariedad(flor.getVariedad());
-    florToUpdate.setCantidad_disponible(flor.getCantidad_disponible());
-    florToUpdate.setPrecio_compra(flor.getPrecio_compra());
-    florToUpdate.setPrecio_venta(flor.getPrecio_venta());
-    return this.floresRepository.save(florToUpdate);
-  }
 
-  // public Boolean deleteFlor (long id) {
-  //   try {
-  //     this.floresRepository.deleteById(id);
-  //     return true;
-  //   } catch (Exception e) {
-  //     return false;
-  //   }
-  // }
+public FloresModel updateFlor(FloresModel flor) {
+    return floresRepository.save(flor);
+}
+
 }

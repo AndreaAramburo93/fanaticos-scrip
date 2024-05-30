@@ -1,28 +1,29 @@
 <div th:fragment="nav">
-    <nav class="bg-purple-900">
-        <div class="flex gap-8 items-center mx-30 h-10 my-5">
-            <a th:href=@{/} class="text-white ml-4 font-bold">Logo</a>
+    <nav class=" block top-0 w-full bg-purple-900">
+        <div class="flex gap-8 items-center mx-30 h-10 ">
+            <a th:href="@{/}" class="text-white ml-4 font-bold text-2xl flex items-center">
+                <i class="fas fa-seedling mr-2"></i> 
+                MiFloristería
+            </a>
             <ul class="text-center flex justify-evenly mr-8 w-full">
+              
                 <li>
-                    <a th:href="@{/flor}" class="text-white hover:text-gray-200">Agregar</a>
+                    <a th:href="@{/inventario}" class="text-white hover:text-gray-200 font-semibold text-lg">Inventario</a>
                 </li>
                 <li>
-                    <a th:href="@{/inventario}" class="text-white hover:text-gray-200">Inventario</a>
+                    <a th:href="@{/pedidos}" class="text-white hover:text-gray-200 font-semibold text-lg">Pedidos</a>
                 </li>
                 <li>
-                    <a th:href="@{/pedidos}" class="text-white hover:text-gray-200">Pedidos</a>
+                    <a th:href="@{/arreglos}" class="text-white hover:text-gray-200 font-semibold text-lg">Arreglos</a>
                 </li>
                 <li>
-                    <a th:href="@{/arreglos}" class="text-white hover:text-gray-200">Arreglos</a>
+                    <a th:href="@{/entregas}" class="text-white hover:text-gray-200 font-semibold text-lg">Entregas</a>
                 </li>
                 <li>
-                    <a th:href="@{/entregas}" class="text-white hover:text-gray-200">Entregas</a>
+                    <a th:href="@{/finanzas}" class="text-white hover:text-gray-200 font-semibold text-lg">Finanzas y Facturas</a>
                 </li>
                 <li>
-                    <a th:href="@{/finanzas}" class="text-white hover:text-gray-200">Finanzas y Facturas</a>
-                </li>
-                <li>
-                    <a th:href="@{/informes}" class="text-white hover:text-gray-200">Informes y Análisis</a>
+                    <a th:href="@{/informes}" class="text-white hover:text-gray-200 font-semibold text-lg">Informes y Análisis</a>
                 </li>
             </ul>
         </div>
