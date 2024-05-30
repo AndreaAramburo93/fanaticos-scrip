@@ -26,12 +26,10 @@ public class FloresController {
     }
   }
 
-  //Metodo para guardar flor en la base de datos
-  @PostMapping("/guardarflor")
-  public String saveFlor(@ModelAttribute FloresModel flor) {
-    this.floresService.saveFlor(flor);
-    return "redirect:/inventario";
-  }
+    @GetMapping("/")
+    public String inicio() {
+        return "index";
+    }
 
   @GetMapping("/eliminarflor/{id_flor}")
   public String deleteFlor(@PathVariable("id_flor") Long id_flor){

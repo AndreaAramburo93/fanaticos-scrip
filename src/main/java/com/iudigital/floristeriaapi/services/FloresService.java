@@ -1,8 +1,10 @@
 package com.iudigital.floristeriaapi.services;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.iudigital.floristeriaapi.models.FloresModel;
 import com.iudigital.floristeriaapi.repositories.IFloresRepository;
 
@@ -26,7 +28,7 @@ public class FloresService {
 
   public void deleteFlorById(long id_flor) {
     this.floresRepository.deleteById(id_flor);
-}
+  }
 
 
 
@@ -34,23 +36,13 @@ public class FloresService {
     return this.floresRepository.findById(id);
   }
 
-  public FloresModel updateById(FloresModel flor, long id) {
-    FloresModel florToUpdate = this.floresRepository.findById(id).get();
-    florToUpdate.setNombre(flor.getNombre());
-    florToUpdate.setColor(flor.getColor());
-    florToUpdate.setVariedad(flor.getVariedad());
-    florToUpdate.setCantidad_disponible(flor.getCantidad_disponible());
-    florToUpdate.setPrecio_compra(flor.getPrecio_compra());
-    florToUpdate.setPrecio_venta(flor.getPrecio_venta());
-    return this.floresRepository.save(florToUpdate);
+
+  public FloresModel updateFlor(FloresModel flor) {
+      return floresRepository.save(flor);
   }
 
-  // public Boolean deleteFlor (long id) {
-  //   try {
-  //     this.floresRepository.deleteById(id);
-  //     return true;
-  //   } catch (Exception e) {
-  //     return false;
-  //   }
-  // }
+  public FloresModel updateById(FloresModel flor, Integer id) {
+    return this.floresRepository.save(flor);
+  }
+
 }
