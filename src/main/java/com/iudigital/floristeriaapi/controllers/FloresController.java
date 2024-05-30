@@ -2,25 +2,20 @@ package com.iudigital.floristeriaapi.controllers;
 import java.util.List;
 import java.util.Optional;
 import com.iudigital.floristeriaapi.models.FloresModel;
-import org.springframework.stereotype.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.iudigital.floristeriaapi.services.FloresService;
 
-
-@Controller
-
+@RestController
+@RequestMapping("/flores")
 public class FloresController {
   
-  
-  
-    private  FloresService floresService;
- 
-  public FloresController (FloresService floresService){
-      this.floresService=floresService;
-  }
-  @GetMapping("/inventario")
+  @Autowired
+  private  FloresService floresService;
 
+  @GetMapping("/inventario")
   public String showFlores(Model model){
     try {
       List<FloresModel> flores = floresService.getAllFlores();
@@ -44,7 +39,6 @@ public class FloresController {
       return "redirect:/inventario";
   }
   
-
   @GetMapping(path = "/{id}")
   public Optional<FloresModel> getFlorById(@PathVariable("id") long id) {
     return this.floresService.getFlorById(id);
@@ -55,37 +49,8 @@ public class FloresController {
     return this.floresService.updateById(flor, id);
   }
 
-
-
   @GetMapping({"/flor","/"})
   public String crearFlor() {
       return "crear-flor";
   }
- 
-   @GetMapping("/pedidos")
-    public String mostrarPedidos() {
-        return "pedidos";  
-    }
-
-    @GetMapping("/arreglos")
-    public String mostrarArreglos() {
-        return "arreglos";  
-    }
-
-    @GetMapping("/entregas")
-    public String mostrarEntregas() {
-        return "entregas";  
-    }
-
-    @GetMapping("/finanzas")
-    public String mostrarFinanzas() {
-        return "finanzas";  
-    }
-
-    @GetMapping("/informes")
-    public String mostrarInformes() {
-        return "informes";  
-    }
-  
-
 }
