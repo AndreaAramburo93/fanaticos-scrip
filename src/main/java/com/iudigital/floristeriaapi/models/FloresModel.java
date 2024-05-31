@@ -7,13 +7,25 @@ import jakarta.persistence.*;
 public class FloresModel {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  
+  @Column(unique = true, nullable = false)
   private long id_flor;
+
+  @Column(length = 100)
   private String nombre;
+
+  @Column(length = 50)
   private String color;
+
+  @Column(length = 50)
   private String variedad;
+
+  @Column(nullable = false)
   private int cantidad_disponible;
+
+  @Column(nullable = false)
   private double precio_compra;
+
+  @Column(nullable = false)
   private double precio_venta;
 
   public long getId_flor() {
