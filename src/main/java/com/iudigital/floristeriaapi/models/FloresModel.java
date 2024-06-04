@@ -1,5 +1,7 @@
 package com.iudigital.floristeriaapi.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -27,6 +29,9 @@ public class FloresModel {
 
   @Column(nullable = false)
   private double precio_venta;
+
+  @OneToMany(mappedBy = "id_flor", fetch = FetchType.LAZY)
+  List<FloresArreglosFloralesModel> floresArreglosFlorales;
 
   public long getId_flor() {
     return id_flor;

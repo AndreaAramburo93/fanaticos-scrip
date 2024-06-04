@@ -9,18 +9,12 @@ public class FloresArreglosFloralesModel {
   @Column(unique = true, nullable = false)
   private long id_flores_arreglo;
 
-  @ManyToOne
-  @JoinColumn(name = "id_arreglo", referencedColumnName = "id_arreglo")
-  private long id_arreglo;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private ArreglosFloralesModel id_arreglo;
 
-  @ManyToOne
-  @JoinColumn(name = "id_flor", referencedColumnName = "id_flor")
-  private long id_flor;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private FloresModel id_flor;
 
-  @Column(nullable = false)
-  private int cantidad;
-
-  // Getters and Setters
   public long getId_flores_arreglo() {
     return id_flores_arreglo;
   }
@@ -29,19 +23,19 @@ public class FloresArreglosFloralesModel {
     this.id_flores_arreglo = id_flores_arreglo;
   }
 
-  public long getId_arreglo() {
+  public ArreglosFloralesModel getId_arreglo() {
     return id_arreglo;
   }
 
-  public void setId_arreglo(long id_arreglo) {
+  public void setId_arreglo(ArreglosFloralesModel id_arreglo) {
     this.id_arreglo = id_arreglo;
   }
 
-  public long getId_flor() {
+  public FloresModel getId_flor() {
     return id_flor;
   }
 
-  public void setId_flor(long id_flor) {
+  public void setId_flor(FloresModel id_flor) {
     this.id_flor = id_flor;
   }
 
@@ -52,5 +46,7 @@ public class FloresArreglosFloralesModel {
   public void setCantidad(int cantidad) {
     this.cantidad = cantidad;
   }
-  
+
+  @Column(nullable = false)
+  private int cantidad;
 }
