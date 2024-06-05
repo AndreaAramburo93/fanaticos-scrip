@@ -1,5 +1,7 @@
 package com.iudigital.floristeriaapi.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -7,14 +9,32 @@ import jakarta.persistence.*;
 public class FloresModel {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  
+  @Column(unique = true, nullable = false)
   private long id_flor;
+
+  @Column(length = 100)
   private String nombre;
+
+  @Column(length = 50)
   private String color;
+
+  @Column(length = 50)
   private String variedad;
+
+  @Column(nullable = false)
   private int cantidad_disponible;
+
+  @Column(nullable = false)
   private double precio_compra;
+
+  @Column(nullable = false)
   private double precio_venta;
+
+  @Column(nullable = false)
+  private String imagen;
+
+  @OneToMany(mappedBy = "id_flor", fetch = FetchType.LAZY)
+  List<FloresArreglosFloralesModel> floresArreglosFlorales;
 
   public long getId_flor() {
     return id_flor;
@@ -57,6 +77,12 @@ public class FloresModel {
   }
   public void setPrecio_venta(double precio_venta) {
     this.precio_venta = precio_venta;
+  }
+  public String getImagen() {
+    return imagen;
+  }
+  public void setImagen(String imagen) {
+    this.imagen = imagen;
   }
   
 }
