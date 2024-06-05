@@ -30,6 +30,9 @@ public class FloresModel {
   @Column(nullable = false)
   private double precio_venta;
 
+  @Column(nullable = false)
+  private String imagen;
+
   @OneToMany(mappedBy = "id_flor", fetch = FetchType.LAZY)
   List<FloresArreglosFloralesModel> floresArreglosFlorales;
 
@@ -74,6 +77,12 @@ public class FloresModel {
   }
   public void setPrecio_venta(double precio_venta) {
     this.precio_venta = precio_venta;
+  }
+  public String getImagen() {
+    return imagen;
+  }
+  public void setImagen(String imagen) {
+    this.imagen = imagen;
   }
   
 }
