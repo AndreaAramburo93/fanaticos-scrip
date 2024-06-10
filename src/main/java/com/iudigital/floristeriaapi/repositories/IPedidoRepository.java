@@ -9,8 +9,9 @@ import com.iudigital.floristeriaapi.models.PedidoModel;
 
 @Repository
 public interface IPedidoRepository extends JpaRepository<PedidoModel, Long>{
-
+    @Override
     public List<PedidoModel> findAll();
+
 
   
 }

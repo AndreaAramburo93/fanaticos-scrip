@@ -12,7 +12,7 @@ import com.iudigital.floristeriaapi.repositories.IPedidoRepository;
 public class PedidosService {
 
   @Autowired
-  private IPedidoRepository pedidoRepository;
+  private final IPedidoRepository pedidoRepository;
 
   public PedidosService(IPedidoRepository pedidosRepository) {
     this.pedidoRepository = pedidosRepository;
