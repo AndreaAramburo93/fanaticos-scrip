@@ -1,18 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
-
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
 </head>
-<body>
+<body class="bg-gray-100">
      <!-- Linea de codigo reutilizable menu de navegacion -->
-     <div th:replace="navbar :: nav"></div>
-     <div>
-      <h1>Pedidos</h1>
-        
-     </div>
+     <div th:replace="~{navbar :: nav}"></div>
+
+    <div class="flex ">
+            <!-- Contenido de los pedidos -->
+     <div class="container   mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div th:each="flor:${floresParaPedidos}" class="col-span-1">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://3.bp.blogspot.com/-zhaRLRPPN7U/UaT6-JNYphI/AAAAAAAACNU/U9cvAp7b0uA/s1600/rosas-6.JPG" class="w-full h-48 object-cover" alt="Imagen de la flor">
+                    <div class="p-4">
+                        <h5 id="nombre" class="text-center text-xl font-semibold mb-2" th:text="${flor.nombre}">Nombrer</h5>
+                        <p id="variedad" class="text-gray-700 text-base"><span class="font-semibold" id="variedad" th:text="${flor.variedad}">Variedad</span></p>
+                        <p id="precio" class="text-gray-700 text-base">Precio: <span class="font-semibold" id="precio" th:text="'$'+${flor.precio_venta}"></span></p>
+                        <p id="stock" class="text-gray-600 mb-4" th:text="${flor.cantidad_disponible} + ' En stock'">Stock</p>
+                        <button class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200" href="#" >Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carrito de compras -->
+    <div  class="w-1/2 mx-auto px-4 py-8">
+        <div class=" rounded overflow-hidden shadow-lg bg-white bg-opacity-75 p-6">
+          <h2 class="font-bold text-center text-xl mb-4">Lista de Pedidos</h2>
+          <div id="carrito" class="mb-4">
+            <!-- Aquí se añadirán las flores seleccionadas -->
+          </div>
+          <button class="bg-green-500 text-white px-4 py-2 rounded w-full">Comprar</button>
+        </div>
+      </div>
+    </div>
+
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          const flowerName = this.parentElement.querySelector('#nombre').innerText;
+          const flowerVariety = this.parentElement.querySelector('#variedad').innerText;
+          const flowerPrice = this.parentElement.querySelector('#precio').innerText;
+          const flowerStock = this.parentElement.querySelector('#stock').innerText;
+          
+          const selectedFlower = document.createElement('div');
+          selectedFlower.className = 'flex justify-between items-center bg-gray-200 p-2 rounded mb-2';
+          selectedFlower.innerHTML = `<span>${flowerName} (${flowerVariety}) - ${flowerPrice}</span>
+                                      <button class="text-red-500"><i class="fas fa-trash"></i></button>`;
+
+          selectedFlower.querySelector('button').addEventListener('click', function() {
+            this.parentElement.remove();
+          });
+
+          document.getElementById('carrito').appendChild(selectedFlower);
+        });
+      });
+    });
+  </script>

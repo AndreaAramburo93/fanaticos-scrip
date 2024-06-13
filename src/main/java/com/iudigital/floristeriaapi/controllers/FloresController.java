@@ -1,7 +1,10 @@
-// package com.iudigital.floristeriaapi.controllers;
+package com.iudigital.floristeriaapi.controllers;
 // import java.util.List;
 // import java.util.Optional;
 // import com.iudigital.floristeriaapi.models.FloresModel;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 // import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.ui.Model;
@@ -52,3 +55,22 @@
 //       return "crear-flor";
 //   }
 // }
+@Controller
+
+public class FloresController {
+ 
+    @GetMapping("/entregas")
+    public String mostrarEntregas() {
+        return "entregas";  
+    }
+
+    @GetMapping("/finanzas")
+    public String mostrarFinanzas() {
+        return "finanzas";  
+    }
+
+    @GetMapping("/informes")
+    public String mostrarInformes() {
+        return "informes";  
+    } 
+}
