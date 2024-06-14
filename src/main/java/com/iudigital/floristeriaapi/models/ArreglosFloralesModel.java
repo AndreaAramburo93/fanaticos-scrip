@@ -18,7 +18,7 @@ public class ArreglosFloralesModel {
   private double precio;
 
   @OneToMany(mappedBy = "arreglo", fetch = FetchType.LAZY)
-  List<FloresArreglosFloralesModel> floresArreglosFlorales;
+  public List<FloresArreglosFloralesModel> floresArreglosFlorales;
 
   // Getters and Setters
   public long getId_arreglo() {

@@ -21,4 +21,8 @@ public class FloresArreglosFloralesService {
   public List<FloresArreglosFloralesModel> saveAllFloresArreglos(List<FloresArreglosFloralesModel> floresArreglosFlorales) {
     return this.floresArreglosFloralesRepository.saveAll(floresArreglosFlorales);
   }
+
+  public List<FloresArreglosFloralesModel> getFloresArreglosByArreglo(Long idArreglo) {
+    return this.floresArreglosFloralesRepository.findByArregloId(idArreglo);
+  }
 }
