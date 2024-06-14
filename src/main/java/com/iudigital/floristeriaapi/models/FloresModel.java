@@ -33,7 +33,7 @@ public class FloresModel {
   @Column(nullable = false)
   private String imagen;
 
-  @OneToMany(mappedBy = "id_flor", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "flor", fetch = FetchType.LAZY)
   List<FloresArreglosFloralesModel> floresArreglosFlorales;
 
   public long getId_flor() {

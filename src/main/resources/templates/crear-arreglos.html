@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arreglos Florales</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Linea de codigo reutilizable menu de navegacion -->
+  <div th:replace="navbar :: nav"></div>
+
+  <!-- Contenedor de tarjetas con flores y agregar arreglo -->
+  <div class="bg-gray-100 flex justify-center items-start my-10 mx-10">
+    <div class="w-3/4 container mx-auto h-screen px-4 overflow-y-scroll">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div th:each="flower : ${inventarioFlores}"
+          class="max-w-sm rounded overflow-hidden shadow-lg bg-white bg-opacity-75">
+          <img th:src="${flower.imagen}" class="w-full h-60 object-cover" alt="Flor">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2" id="nombre" th:text="${flower.nombre}">Nombre de la Flor</div>
+            <p class="text-gray-700 text-base">Variedad: <span class="font-semibold" id="variedad"
+                th:text="${flower.variedad}">Variedad de la Flor</span></p>
+            <p class="text-gray-700 text-base">Precio: <span class="font-semibold" id="precio"
+                th:text="${'$ ' + flower.precio_venta}">20.00</span></p>
+            <button th:id="${flower.id_flor}" onclick="disableButton(this)"
+              class="mt-4 bg-blue-500 text-white px-4 py-2 rounded disa">Agregar al arreglo</button>
+          </div>
+          <div class="px-6 pt-4 pb-2">
+            <span
+              class="inline-block bg-blue-200 bg-opacity-50 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#flores</span>
+            <span
+              class="inline-block bg-pink-200 bg-opacity-50 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#jardinería</span>
+            <span
+              class="inline-block bg-green-200 bg-opacity-50 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+              th:text="${'#' + flower.variedad}"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/4 container mx-auto px-4">
+      <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white bg-opacity-75 p-6">
+        <h2 class="font-bold text-xl mb-4">Crear Arreglo Floral</h2>
+        <div id="arreglo-floral" class="mb-4">
+          <!-- Aquí se añadirán las flores seleccionadas -->
+        </div>
+        <label for="descripcion" class="block text-gray-700 text-sm font-bold">Agrega una descripcion:</label>
+        <textarea id="descripcion" name="descripcion"
+          class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          required></textarea>
+        <button class="bg-green-500 text-white px-4 py-2 rounded w-full" onclick="guardarArreglo()">Finalizar
+          Arreglo</button>
+        <label for="precio" class="block text-gray-700 text-sm font-bold mt-4">Precio Total:</label>
+        <input type="text" id="precioTotal" name="precioTotal"
+          class="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+          readonly />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function disableButton(button) {
+      button.classList.add('cursor-not-allowed', 'opacity-50', 'bg-gray-500');
+      button.disabled = true;
+    }
+
+    function eliminarFlor(id) {
+      const arregloFloral = JSON.parse(window.sessionStorage.getItem('arregloFloral'));
+      const index = arregloFloral.findIndex(flower => flower.id === id);
+      arregloFloral.splice(index, 1);
+      window.sessionStorage.setItem('arregloFloral', JSON.stringify(arregloFloral));
+      document.querySelector(`#flower-${id}`).remove();
+      const precioTotal = arregloFloral.reduce((acc, flower) => acc + flower.price, 0)
+      document.querySelector('#precioTotal').value = `$ ${precioTotal}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const arregloFloral = window.sessionStorage.getItem('arregloFloral') ? JSON.parse(window.sessionStorage.getItem('arregloFloral')) : [];
+      const buttons = document.querySelectorAll('.mt-4.bg-blue-500.text-white');
+      buttons.forEach(button => {
+        button.addEventListener('click', function () {
+          const flowerId = this.parentElement.querySelector('button').id;
+          if (flowerId === '') return
+          const flowerName = this.parentElement.querySelector('#nombre').innerText;
+          const flowerVariety = this.parentElement.querySelector('#variedad').innerText;
+          const flowerPrice = this.parentElement.querySelector('#precio').innerText;
+          const flower = {
+            id: flowerId,
+            name: flowerName,
+            variety: flowerVariety,
+            price: parseFloat(flowerPrice.replace('$ ', ''))
+          };
+          arregloFloral.push(flower);
+          window.sessionStorage.setItem('arregloFloral', JSON.stringify(arregloFloral));
+
+          const selectedFlower = document.createElement('div');
+          selectedFlower.id = `flower-${flowerId}`;
+          selectedFlower.className = 'flex justify-between items-center bg-gray-200 p-2 rounded mb-2';
+          selectedFlower.innerHTML = `
+            <div>
+              <label
+                for="Cantidad"
+                class="block text-gray-700 text-sm font-bold"
+                >Cantidad:</label
+              >
+              <input
+                type="number"
+                id="cantidad-${flowerId}"
+                name="cantidad"
+                value="1"
+                class="w-10 border border-gray-300 p-2 rounded-md focus:outline-none focus:ring focus:ring-blue-200"
+                required
+              />
+            </div>
+            <span> REF: ${flowerId} -${flowerName} (${flowerVariety}) ${flowerPrice}</span>
+            <button onclick="eliminarFlor(${flowerId})" class="text-red-500"><i class="fas fa-trash"></i></button>`
+            ;
+
+          // selectedFlower.querySelector('button').addEventListener('click', function () {
+          //   this.parentElement.remove();
+          // });
+
+          document.getElementById('arreglo-floral').appendChild(selectedFlower);
+          const precioTotal = arregloFloral.reduce((acc, flower) => acc + flower.price, 0)
+          document.querySelector('#precioTotal').value = `$ ${precioTotal}`;
+        });
+      });
+    });
+
+    function guardarArreglo() {
+      const descripcion = document.getElementById('descripcion').value
+      const precioTotal = parseFloat(document.getElementById('precioTotal').value.replace('$ ', '').trim())
+      fetch('/arreglos-florales', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          descripcion,
+          precio: precioTotal
+        })
+      })
+        .then(response => response.json())
+        .then(data => guardarFloresArreglo(data.id_arreglo))
+        .catch(error => {
+          console.error(error);
+        })
+    }
+
+    function guardarFloresArreglo(id_arreglo) {
+      const arrFlowers = JSON.parse(window.sessionStorage.getItem('arregloFloral'))
+      console.log(arrFlowers)
+      const saveArr = []
+      for (const flower of arrFlowers) {
+        const cantidad = document.getElementById(`cantidad-${flower.id}`).value
+        saveArr.push({
+          idFlor: parseInt(flower.id),
+          idArreglo: id_arreglo,
+          cantidad: parseInt(cantidad)
+        })
+      }
+      console.log(saveArr)
+      fetch('/flores-arreglos-florales', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(saveArr)
+      }).then(response => response.json()).then(data => console.log(data)).catch(error => console.error(error))
+      window.sessionStorage.removeItem('arregloFloral');
+    }
+  </script>
+
+</body>
+
+</html>

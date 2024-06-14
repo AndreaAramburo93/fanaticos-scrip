@@ -17,8 +17,8 @@ public class ArreglosFloralesModel {
   @Column(nullable = false)
   private double precio;
 
-  @OneToMany(mappedBy = "id_arreglo", fetch = FetchType.LAZY)
-  List<FloresArreglosFloralesModel> floresArreglosFlorales;
+  @OneToMany(mappedBy = "arreglo", fetch = FetchType.LAZY)
+  public List<FloresArreglosFloralesModel> floresArreglosFlorales;
 
   // Getters and Setters
   public long getId_arreglo() {
