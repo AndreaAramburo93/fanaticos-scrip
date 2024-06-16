@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.iudigital.floristeriaapi.models.FloresModel; 
+
+import com.iudigital.floristeriaapi.models.ArreglosFloralesModel;
+import com.iudigital.floristeriaapi.models.FloresModel;
+import com.iudigital.floristeriaapi.services.ArreglosFloralesService;
 import com.iudigital.floristeriaapi.services.FloresService;
 import com.iudigital.floristeriaapi.services.PedidosService;
 
@@ -28,6 +31,8 @@ import com.iudigital.floristeriaapi.services.PedidosService;
 public class PedidoController {
 
     private FloresService floresService;
+    @Autowired
+    private ArreglosFloralesService arreglosFloralesService;
 
     public PedidoController(FloresService floresService) {
         this.floresService = floresService;
@@ -36,6 +41,8 @@ public class PedidoController {
     @GetMapping("/pedidos")
     public String showFlores(Model model) {
         List<FloresModel> flores = floresService.getAllFlores();
+        List<ArreglosFloralesModel> arreglos = arreglosFloralesService.getAllArreglosFlorales();
+        model.addAttribute("arreglosParaPedidos", arreglos);
         model.addAttribute("floresParaPedidos", flores);
         return "/pedidos";
     }

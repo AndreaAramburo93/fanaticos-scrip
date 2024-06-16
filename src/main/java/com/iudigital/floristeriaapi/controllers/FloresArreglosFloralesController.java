@@ -32,8 +32,7 @@ public class FloresArreglosFloralesController {
   
 
   @PostMapping()
-  @ResponseBody
-  public ResponseEntity<List<FloresArreglosFloralesModel>> saveAllFloresArreglos(@RequestBody List<FloresArregloFloralDto> floresArreglosFlorales) {
+  public String saveAllFloresArreglos(@RequestBody List<FloresArregloFloralDto> floresArreglosFlorales) {
     List<FloresArreglosFloralesModel> guardarFloresArreglo = new ArrayList<>();
     for (FloresArregloFloralDto floresArregloFloral : floresArreglosFlorales) {
       FloresModel flor = floresService.getFlorById(floresArregloFloral.getIdFlor()).get();
@@ -46,7 +45,6 @@ public class FloresArreglosFloralesController {
     }
     List<FloresArreglosFloralesModel> floresArregloGuardado = floresArreglosFloralesService.saveAllFloresArreglos(guardarFloresArreglo);
     System.out.println(floresArregloGuardado);
-    return ResponseEntity.ok().body(floresArregloGuardado);
-    // return "/inventario";
+    return "redirect:/arreglos-florales/listar";
   }
 }
