@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Bienvenido a Nuestra Floristería</title>
@@ -7,12 +8,80 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
-<body class="bg-gray-100">
+
+<body class="bg-gray-100 mx-14">
 
     <!-- Fragmento de Navegación -->
     <div th:replace="navbar::nav"></div>
 
-    <!-- Contenido Principal -->
+    <header class="relative bg-cover bg-center my-10 rounded-2xl"
+        style="background-image: url('https://image.freepik.com/free-photo/delightful-blooming-yellow-rose-bush_115919-126.jpg')">
+        <div class="container mx-auto flex items-center justify-between p-6 bg-gray-800 bg-opacity-50">
+            <div class="w-1/2">
+                <h1 class="text-5xl font-bold text-white bg-opacity-75 p-4 rounded-lg">La belleza de las flores en tus
+                    manos</h1>
+            </div>
+            <div class="w-1/2">
+                <img class="rounded-lg shadow-lg opacity-90"
+                    src="https://c1.staticflickr.com/3/2746/4148501876_8bde9b5eb8_b.jpg" alt="Flores">
+            </div>
+        </div>
+    </header>
+    <section class="my-12 text-center">
+        <h2 class="text-3xl font-semibold text-gray-700 mb-8">Clientes Satisfechos</h2>
+        <div class="flex justify-center space-x-6">
+            <img class="w-32 h-32 rounded-full shadow-lg border-4 border-red-200"
+                src="https://thumbs.dreamstime.com/z/vectores-de-dibujos-animados-ni%C3%B1os-candidatos-trabajo-empleado-b%C3%BAsqueda-persona-229037377.jpg"
+                alt="Cliente 1">
+            <img class="w-32 h-32 rounded-full shadow-lg border-4 border-green-200"
+                src="https://www.shutterstock.com/image-vector/young-businessman-holding-clipboard-file-260nw-1660318192.jpg"
+                alt="Cliente 2">
+            <img class="w-32 h-32 rounded-full shadow-lg border-4 border-red-200"
+                src="https://previews.123rf.com/images/yupiramos/yupiramos1704/yupiramos170417375/76596674-persona-del-hombre-de-dibujos-animados-sobre-fondo-blanco-dise%C3%B1o-colorido-ilustraci%C3%B3n-vectorial.jpg"
+                alt="Cliente 3">
+            <img class="w-32 h-32 rounded-full shadow-lg border-4 border-green-200"
+                src="https://img.freepik.com/vector-gratis/empresaria-trabajando-escribiendo-documento-papel-personaje-personas-dibujos-animados-diseno-plano_40876-3339.jpg?w=360"
+                alt="Cliente 4">
+        </div>
+    </section>
+
+    <section class="bg-white p-8 shadow-lg rounded-lg mx-4 my-12">
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Galería de Imágenes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img class="w-full h-48 object-cover rounded-lg shadow-md"
+                src="https://th.bing.com/th/id/OIP.wbIM2Ms6PEnKWMBPC7uk4AHaE8?rs=1&pid=ImgDetMain" alt="Flor 1">
+            <img class="w-full h-48 object-cover rounded-lg shadow-md"
+                src="https://c1.staticflickr.com/3/2746/4148501876_8bde9b5eb8_b.jpg" alt="Flor 2">
+            <img class="w-full h-48 object-cover rounded-lg shadow-md"
+                src="https://th.bing.com/th/id/R.a86f79374bd7edf9a2b182bc8640b5a3?rik=WxIV2eBAx3RWcg&riu=http%3a%2f%2facdlc.ucoz.es%2f_ph%2f1%2f447594489.jpg&ehk=bGVelV49%2f2LhfrSsolCXtaPwV3JQv64zB0%2bNAE5iLpA%3d&risl=&pid=ImgRaw&r=0"
+                alt="Flor 3">
+            <img class="w-full h-48 object-cover rounded-lg shadow-md"
+                src="https://image.freepik.com/free-photo/delightful-blooming-yellow-rose-bush_115919-126.jpg"
+                alt="Flor 4">
+            <img class="w-full h-48 object-cover rounded-lg shadow-md"
+                src="https://www.absolutviajes.com/wp-content/uploads/2009/08/flores.jpg" alt="Flor 5">
+            <img class="w-full h-48 object-cover rounded-lg shadow-md"
+                src="https://w0.peakpx.com/wallpaper/346/965/HD-wallpaper-chrysanthemums-ultra-nature-flowers-autumn-garden-farm-plants-chrysanths-mums-chrysanthemums.jpg"
+                alt="Flor 6">
+        </div>
+    </section>
+    
+    <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
+        <section class="bg-white p-8 shadow-lg rounded-lg mx-4 my-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Contacto</h2>
+            <p class="text-gray-600 mb-2">Teléfono: (123) 456-7890</p>
+            <p class="text-gray-600 mb-2">Email: contacto@mifloristeria.com</p>
+            <p class="text-gray-600">Dirección: Calle de las Flores, 123, Bogotá, Colombia</p>
+        </section>
+        <section class="bg-white p-8 shadow-lg rounded-lg mx-4 my-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Sobre Nosotros</h2>
+            <p class="text-gray-600">En Mi Floristería, nos dedicamos a ofrecer la mejor calidad en flores y
+                arreglos florales para cualquier ocasión. Nuestro compromiso es brindar un servicio excepcional y
+                asegurar que cada cliente quede completamente satisfecho.</p>
+        </section>
+    </div>
+
+    <!-- Contenido Principal
     <div class="container mx-auto mt-10 p-5 bg-white shadow-md rounded-lg">
         <h1 class="text-center text-4xl font-bold text-purple-900 mb-5">Bienvenido a Nuestra Floristería</h1>
         <p class="text-center text-lg text-gray-700 mb-4">
@@ -53,7 +122,8 @@
         <p class="text-center text-lg text-gray-700 mt-4">
             ¡Esperamos que encuentres las flores perfectas para tu ocasión especial!
         </p>
-    </div>
+    </div> -->
 
 </body>
+
 </html>
